@@ -58,7 +58,7 @@ export class FaceSnapsService {
       id: 6,
       title: 'My sixth snap',
       description: 'This is my sixth snap',
-      imageUrl: 'https://picsum.photos/1000?random=6',
+      imageUrl: 'https://picsum.photos/200/200?random=6',
       createdAt: new Date(),
       snaps: 4,
       location: 'London'
@@ -71,7 +71,7 @@ export class FaceSnapsService {
   }
 
   getFaceSnapById(id: number) : FaceSnap{
-    const theFaceSnap =  this.FaceSnaps.find(faceSnap => faceSnap.id=id);
+    const theFaceSnap =  this.FaceSnaps.find(faceSnap => faceSnap.id===id);
     if(!theFaceSnap){
       throw new Error('Face Snap not Found')
     }
@@ -80,7 +80,8 @@ export class FaceSnapsService {
     }
 
   }
- 
+
+
 
 
   snapFaceSnapById(id: number, snapType: 'snap' | 'unsnap'): void {

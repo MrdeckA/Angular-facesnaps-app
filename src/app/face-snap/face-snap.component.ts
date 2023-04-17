@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnap } from '../models/face-snap.model';
 import { FaceSnapsService } from '../services/face-snaps.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-face-snap',
@@ -9,7 +10,7 @@ import { FaceSnapsService } from '../services/face-snaps.service';
 })
 export class FaceSnapComponent implements OnInit {
 
-  constructor(private faceSnapService : FaceSnapsService){}
+  constructor(private faceSnapService : FaceSnapsService, private router : Router){}
 
 
   @Input() faceSnap! :  FaceSnap;
@@ -32,6 +33,10 @@ export class FaceSnapComponent implements OnInit {
         this.faceSnapService.snapFaceSnapById(this.faceSnap.id, 'unsnap')
         this.buttonText = 'Oh Snap!'
       }
+  }
+
+  onViewClick(){
+    this.router.navigateByUrl(`facesnaps/${this.faceSnap.id}`)
   }
 
 }
